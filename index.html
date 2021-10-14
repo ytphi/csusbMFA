@@ -32,15 +32,6 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false; trackingMethod: best;"
     >
-      <a-assets>
-        <video
-          id="vid"
-          type="video/mp4"
-          preload="auto"
-          loop="true"
-          src="test.mp4"
-        ></video>
-      </a-assets>
       <a-marker
         type="pattern"
         url="./xREAL-Marker.patt"
@@ -55,8 +46,10 @@
           rotation="90 180 0"
         >
           <a-video
+            id="vid"
+            loop="true"
             vidhandler
-            src="#vid"
+            src="test.mp4"
             width="28.5"
             height="19"
             position="0 0 -1"
