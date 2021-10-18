@@ -37,7 +37,14 @@
       arjs="sourceType: webcam; debugUIEnabled: false; trackingMethod: best;"
     >
       <a-assets>
-        <video id="vid" src="./test.mp4" preload="auto" loop autoplay></video>
+        <video
+          id="vid"
+          src="./test.mp4"
+          preload="auto"
+          loop
+          autoplay
+          playsinline
+        ></video>
       </a-assets>
       <a-marker
         type="pattern"
