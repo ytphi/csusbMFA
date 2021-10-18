@@ -2,31 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
-    <script>
-      AFRAME.registerComponent("vidhandler", {
-        init: function () {
-          this.toggle = false;
-          document.querySelector("#vid").pause(); //reference to the video
-          console.log("pausing");
-        },
-        tick: function () {
-          if (document.querySelector("a-marker").object3D.visible == true) {
-            if (!this.toggle) {
-              this.toggle = true;
-              document.querySelector("#vid").play();
-              console.log("playing");
-            }
-          } else {
-            this.toggle = false;
-            document.querySelector("#vid").pause();
-            console.log("pausing");
-          }
-        },
-      });
-    </script>
+    <script src="scripts/toggle-play-on-window-click.js"></script>
     <title>Yutong Liu</title>
   </head>
   <body style="margin: 0px; overflow: hidden">
@@ -39,31 +18,33 @@
       <a-assets>
         <video
           id="vid"
-          src="./test.mp4"
+          src="assets/test.mp4"
           preload="auto"
           loop
           autoplay
+          webkit-playsinline
+          crossorigin="anonymous"
           playsinline
           muted
         ></video>
       </a-assets>
       <a-marker
         type="pattern"
-        url="./xREAL-Marker.patt"
+        url="assets/xREAL-Marker.patt"
         smooth="true"
         smoothThreshold="2"
         smoothTolerance="0.01"
         smoothCount="5"
       >
         <a-entity
-          gltf-model="url(./full_screen/untitled.gltf)"
+          gltf-model="url(assets/full_screen/screen.gltf)"
           scale="0.1 0.1 0.1"
           rotation="90 180 0"
         >
           <a-video
             id="vid"
             loop="true"
-            vidhandler
+            toggle-play-on-window-click
             src="#vid"
             width="28.5"
             height="19"
